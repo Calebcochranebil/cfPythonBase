@@ -60,7 +60,7 @@ Next, create a new environment called “cf-python-copy”. In this new environm
 
 ## Create recipe_1
 
-![step 1-2](./exercise_1.2/2.png)
+![step 1](./exercise_1.2/1-2.png)
 
 _A dictionary was chosen because it allows you to associate descriptive keys with their corresponding values. This makes it easy to access and manage different aspects of the recipe, such as the name, cooking time, and list of ingredients, in a structured and readable manner. Dictionaries are a natural choice for organizing this type of data._
 
