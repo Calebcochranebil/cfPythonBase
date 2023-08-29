@@ -83,3 +83,64 @@ Generate 4 more recipes as recipe_2, recipe_3, recipe_4, and recipe_5, and then 
 Print the ingredients of each recipe as five different lists, inside the IPython shell.
 
 ![step 5](./Exercise_1.2/5.png)
+
+# Exercise 3
+
+## Table of Contents
+
+1. [Create a New Python Script](#create-a-new-python-script)
+2. [Initialize Two Empty Lists](#initialize-two-empty-lists)
+3. [Define a Function](#define-a-function)
+4. [Get The Number of New Recipes](#get-the-number-of-new-recipes)
+5. [Check Ingredients and Add Recipes](#check-ingredients-and-add-recipes)
+6. [Assign Difficulty Levels and Display Recipes](#assign-difficulty-levles-and-display-recipes)
+7. [Display All Ingredients](#display-all-ingredients)
+8. [Show That It Works](#show-that-it-works)
+
+## Create a New Python Script
+
+Open a Python script in an editor of your choice and name it “Exercise_1.3.py”.
+
+![step 1](./Exercise_1.3/1.png)
+
+## Initialize Two Empty Lists
+
+Initialize two empty lists: `recipes_list` and `ingredients_list`.
+
+![step 2](./Exercise_1.3/2.png)
+
+## Define a Function
+
+Define a function called `take_recipe`. This function takes user input for the recipe's `name`, `cooking_time` (in minutes), and a list of `ingredients`. It stores these values in a dictionary called `recipe`.
+
+![step 3](./Exercise_1.3/3.png)
+
+## Get the Number of New Recipes
+
+Ask the user how many recipes they want to enter and store the response in a variable called `n`.
+
+![step 4](./Exercise_1.3/4.png)
+
+## Check Ingredients and Add Recipes
+
+Run a loop that executes `take_recipe()` for each recipe. Inside this loop, check each ingredient and add it to the `ingredients_list` if it's not already present. Finally, append the recipe to the `recipes_list`.
+
+![step 5](./Exercise_1.3/5.png)
+
+## Assign Difficulty Levels and Display Recipes
+
+Run another loop to assign a difficulty level to each recipe based on cooking time and ingredient count. Then, display each recipe's details in a consistent format.
+
+![step 6](./Exercise_1.3/6.png)
+
+## Display All Ingredients
+
+Display a list of all unique ingredients used across all recipes.
+
+![step 7](./Exercise_1.3/7.png)
+
+## Show That It Works
+
+To run the script, enter the following command: `python Exercise_1.3.py`.
+
+![step 8](./Exercise_1.3/8.png)
