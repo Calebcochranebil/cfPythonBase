@@ -10,7 +10,7 @@ def display_recipe(recipe):
         print(ingredient)
     print("Difficulty:", recipe["difficulty"])
     print()
-
+    
 
 # Function to search for recipes containing a particular ingredient
 def search_ingredient(data):
