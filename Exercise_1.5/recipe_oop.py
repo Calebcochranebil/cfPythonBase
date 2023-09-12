@@ -27,7 +27,6 @@ class Recipe:
     def get_ingredients(self):
         return self.ingredients
 
-    # Sets the difficulty attribute based on the number of ingredients and cooking time.
     def calculate_difficulty(self):
         if self.cooking_time < 10 and len(self.ingredients) < 4:
             self.difficulty = "Easy"
@@ -43,17 +42,14 @@ class Recipe:
             self.calculate_difficulty()
         return self.difficulty
 
-    # Checks if an ingredient is in the recipe.
     def search_ingredient(self, ingredient):
         return ingredient in self.ingredients
 
-    # Updates the all_ingredients list with the ingredients of the recipe.
     def update_all_ingredients(self):
         for ingredient in self.ingredients:
             if ingredient not in Recipe.all_ingredients:
                 Recipe.all_ingredients.append(ingredient)
 
-    # Returns a string representation of the recipe.
     def __str__(self):
         output = (
             f"Recipe: {self.name}\n"
@@ -67,7 +63,7 @@ class Recipe:
 
 
 def recipe_search(data, search_term):
-    found_recipes = []  # Keep track of printed recipe names
+    found_recipes = []
     for recipe in data:
         if (
             recipe.search_ingredient(search_term)
