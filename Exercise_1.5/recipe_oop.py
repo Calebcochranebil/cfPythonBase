@@ -65,6 +65,7 @@ class Recipe:
             output += f"\t{ingredient}\n"
         return output
 
+
 def recipe_search(data, search_term):
     found_recipes = []  # Keep track of printed recipe names
     for recipe in data:
@@ -75,3 +76,8 @@ def recipe_search(data, search_term):
             print(recipe)
             found_recipes.append(recipe.get_name())
     print()
+
+
+tea = Recipe("Tea", 5)
+tea.add_ingredients("Tea Leaves", "Sugar", "Water")
+print(tea)
