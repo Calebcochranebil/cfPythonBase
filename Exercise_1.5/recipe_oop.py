@@ -64,3 +64,14 @@ class Recipe:
         for ingredient in self.ingredients:
             output += f"\t{ingredient}\n"
         return output
+
+def recipe_search(data, search_term):
+    found_recipes = []  # Keep track of printed recipe names
+    for recipe in data:
+        if (
+            recipe.search_ingredient(search_term)
+            and recipe.get_name() not in found_recipes
+        ):
+            print(recipe)
+            found_recipes.append(recipe.get_name())
+    print()
