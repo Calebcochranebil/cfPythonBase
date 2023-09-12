@@ -86,11 +86,11 @@ coffee = Recipe("Coffee", 5)
 coffee.add_ingredients("Coffee Powder", "Sugar", "Water")
 print(coffee)
 
-cake = Recipe("Cake", 50)
-cake.add_ingredients(
-    "Sugar", "Butter", "Eggs", "Vanilla Essence", "Flour", "Baking Powder", "Milk"
+waffles = Recipe("Waffles", 50)
+waffles.add_ingredients(
+    "Sugar", "Butter", "Eggs", "Flour", "Baking Powder", "Milk"
 )
-print(cake)
+print(waffles)
 
 eggs = Recipe("Eggs", 5)
 eggs.add_ingredients(
