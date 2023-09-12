@@ -99,3 +99,10 @@ banana_smoothie.add_ingredients(
 print(banana_smoothie)
 
 recipes_list = [tea, coffee, cake, banana_smoothie]
+
+for search_term in ["Water", "Sugar", "Bananas"]:
+    print("-" * 50)
+    print()
+    print(f"Recipes containing {search_term}:")
+    recipe_search(recipes_list, search_term)
+    print()
