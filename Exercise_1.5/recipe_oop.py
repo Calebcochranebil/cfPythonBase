@@ -86,14 +86,16 @@ coffee = Recipe("Coffee", 5)
 coffee.add_ingredients("Coffee Powder", "Sugar", "Water")
 print(coffee)
 
-waffles = Recipe("Waffles", 50)
-waffles.add_ingredients(
-    "Sugar", "Butter", "Eggs", "Flour", "Baking Powder", "Milk"
+cake = Recipe("Cake", 50)
+cake.add_ingredients(
+    "Sugar", "Butter", "Eggs", "Vanilla Essence", "Flour", "Baking Powder", "Milk"
 )
-print(waffles)
+print(cake)
 
-eggs = Recipe("Eggs", 5)
-eggs.add_ingredients(
-    "Eggs", "Cheese", "Salt", "Pepper"
+banana_smoothie = Recipe("Banana Smoothie", 5)
+banana_smoothie.add_ingredients(
+    "Bananas", "Milk", "Peanut Butter", "Sugar", "Ice Cubes"
 )
-print(eggs)
+print(banana_smoothie)
+
+recipes_list = [tea, coffee, cake, banana_smoothie]
