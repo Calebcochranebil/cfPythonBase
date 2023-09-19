@@ -208,3 +208,30 @@ def update_recipe(conn, cursor):
     conn.commit()
     print()
     print("Recipe updated successfully!")
+
+# Delete a recipe.
+def delete_recipe(conn, cursor):
+    results = cursor.execute("SELECT * FROM Recipes")
+    results = cursor.fetchall()
+    print()
+    print("Available recipes:")
+    for row in results:
+        print(f"{row[0]}. {row[1]}")
+    while True:
+        try:
+            recipe_choice = int(
+                input("\nEnter the number of the recipe you want to delete: ")
+            )
+            if recipe_choice not in range(1, len(results) + 1):
+                print()
+                print("Please select a valid option")
+            else:
+                break
+        except ValueError:
+            print()
+            print("Please select a valid option")
+    recipe_id = results[recipe_choice - 1][0]
+    cursor.execute("DELETE FROM Recipes WHERE id = %s", (recipe_id,))
+    conn.commit()
+    print()
+    print("Recipe deleted successfully!")
