@@ -22,3 +22,39 @@ cursor.execute(
     "difficulty VARCHAR(20)"
     ")"
 )
+
+# Main menu function.
+def main_menu(conn, cursor):
+    while True:
+        print("\n-------------------------------------")
+        print("Main Menu:")
+        print("1. Create a new recipe")
+        print("2. Search for a recipe by ingredient")
+        print("3. Update an existing recipe")
+        print("4. Delete a recipe")
+        print("5. View all recipes")
+        print("6. Exit")
+        print("-------------------------------------\n")
+
+        try:
+            selection = int(input("Your choice: "))
+            if selection == 1:
+                create_recipe(conn, cursor)
+            elif selection == 2:
+                search_recipe(cursor)
+            elif selection == 3:
+                update_recipe(conn, cursor)
+            elif selection == 4:
+                delete_recipe(conn, cursor)
+            elif selection == 5:
+                view_recipes(cursor)
+            elif selection == 6:
+                conn.commit()
+                conn.close()
+                exit()
+            else:
+                print()
+                print("Please select a valid option")
+        except ValueError:
+            print()
+            print("Please select a valid option")
