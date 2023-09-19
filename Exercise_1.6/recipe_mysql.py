@@ -58,3 +58,33 @@ def main_menu(conn, cursor):
         except ValueError:
             print()
             print("Please select a valid option")
+
+# Create a new recipe.
+def create_recipe(conn, cursor):
+    ingredients = []
+    name = input("\nEnter the name of the recipe: ")
+    cooking_time = int(input("\nEnter the cooking time in minutes: "))
+    ingredient = input("Enter an ingredient or type 'done' to finish: ")
+    while ingredient != "done":
+        ingredients.append(ingredient)
+        ingredient = input("Enter an ingredient or type 'done' to finish: ")
+    difficulty = calculate_difficulty(cooking_time, ingredients)
+    ingredients = ", ".join(ingredients)
+    cursor.execute(
+        "INSERT INTO Recipes (name, ingredients, cooking_time, difficulty) VALUES (%s, %s, %s, %s)",
+        (name, ingredients, cooking_time, difficulty),
+    )
+    conn.commit()
+    print()
+    print("Recipe created successfully!")
+
+    # Calculate the difficulty of a recipe based on its cooking time and number of ingredients.
+def calculate_difficulty(cooking_time, ingredients):
+    if cooking_time < 10 and len(ingredients) < 4:
+        return "Easy"
+    elif cooking_time < 10 and len(ingredients) >= 4:
+        return "Medium"
+    elif cooking_time >= 10 and len(ingredients) < 4:
+        return "Intermediate"
+    else:
+        return "Hard"
