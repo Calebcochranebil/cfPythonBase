@@ -88,3 +88,53 @@ def calculate_difficulty(cooking_time, ingredients):
         return "Intermediate"
     else:
         return "Hard"
+
+# Search for a recipe based on an ingredient.
+def search_recipe(cursor):
+    cursor.execute("SELECT ingredients FROM Recipes")
+    results = cursor.fetchall()
+    all_ingredients = []
+    for row in results:
+        for ingredient in row:
+            ingredients_list = ingredient.split(
+                ", "
+            )  # Split the ingredients string into a list
+            for item in ingredients_list:
+                if item not in all_ingredients:
+                    all_ingredients.append(item)
+    print()
+    print("Available ingredients:")
+    print()
+    for i in range(len(all_ingredients)):
+        print(f"{i+1}. {all_ingredients[i]}")
+    while True:
+        try:
+            ingredient_choice = int(
+                input("\nEnter the number of the ingredient you want to search for: ")
+            )
+            if ingredient_choice not in range(1, len(all_ingredients) + 1):
+                print()
+                print("Please select a valid option")
+            else:
+                break
+        except ValueError:
+            print()
+            print("Please select a valid option")
+    search_ingredient = all_ingredients[ingredient_choice - 1]
+    cursor.execute(
+        "SELECT name, ingredients, cooking_time, difficulty FROM Recipes WHERE ingredients LIKE %s",
+        (f"%{search_ingredient}%",),
+    )
+    results = cursor.fetchall()
+    if len(results) == 0:
+        print()
+        print("No recipes found")
+    else:
+        print()
+        print("Search results:")
+        for row in results:
+            print()
+            print(f"Name: {row[0]}")
+            print(f"Ingredients: {row[1]}")
+            print(f"Cooking time: {row[2]} minutes")
+            print(f"Difficulty: {row[3]}")
