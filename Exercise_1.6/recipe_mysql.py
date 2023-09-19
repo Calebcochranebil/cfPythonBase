@@ -235,3 +235,22 @@ def delete_recipe(conn, cursor):
     conn.commit()
     print()
     print("Recipe deleted successfully!")
+
+    # View all recipes.
+def view_recipes(cursor):
+    cursor.execute("SELECT * FROM Recipes")
+    results = cursor.fetchall()
+    if len(results) == 0:
+        print()
+        print("No recipes found")
+    else:
+        for row in results:
+            print()
+            print(f"Name: {row[1]}")
+            print(f"Ingredients: {row[2]}")
+            print(f"Cooking time: {row[3]} minutes")
+            print(f"Difficulty: {row[4]}")
+
+
+main_menu(conn, cursor)
+print("Goodbye!")
