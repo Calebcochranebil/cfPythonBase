@@ -1,0 +1,30 @@
+Python for Web Developers 
+Learning Journal
+
+
+Exercise 1.6: Connecting to Databases in Python
+
+Learning Goals
+
+? Create a MySQL database for your Recipe app
+
+Reflection Questions
+
+1. What are databases and what are the advantages of using them? Databases store and organize data for easy access and management. Advantages include efficient data retrieval, data integrity, and concurrent access.
+
+2. List 3 data types that can be used in MySQL and describe them briefly:
+
+Data type
+Definition
+VARCHAR
+Variable-length string data type in MySQL.
+INT
+Integer data type for storing whole numbers.
+DATE
+Data type for storing date values in the format YYYY-MM-DD.
+
+3.  In what situations would SQLite be a better choice than MySQL? SQLite is preferable for embedded systems, mobile apps, low-traffic applications, prototyping, and local storage needs. It's efficient for read-heavy operations and doesn't require a dedicated server.
+
+4. Think back to what you learned in the Immersion course. What do you think about the differences between JavaScript and Python as programming languages? JavaScript and Python offer distinct advantages: JavaScript is vital for web development, while Python excels in simplicity and versatility across various domains. Both have unique strengths based on their use cases.
+
+5. Now that you�re nearly at the end of Achievement 1, consider what you know about Python so far. What would you say are the limitations of Python as a programming language? Python's limitations include slower execution speed compared to languages like C++, limited mobile development support, and challenges in handling multi-threaded CPU-bound tasks due to the Global Interpreter Lock.
