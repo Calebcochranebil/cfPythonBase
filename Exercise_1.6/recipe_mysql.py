@@ -1,18 +1,13 @@
 import mysql.connector
 
-# Connect to the database
 conn = mysql.connector.connect(host="localhost", user="cf-python", passwd="password")
 
-# Create a cursor
 cursor = conn.cursor()
 
-# Create a database
 cursor.execute("CREATE DATABASE IF NOT EXISTS task_database")
 
-# Use the database
 cursor.execute("USE task_database")
 
-# Create a table called Recipes
 cursor.execute(
     "CREATE TABLE IF NOT EXISTS Recipes ("
     "id INT AUTO_INCREMENT PRIMARY KEY,"
@@ -23,7 +18,6 @@ cursor.execute(
     ")"
 )
 
-# Main menu function.
 def main_menu(conn, cursor):
     while True:
         print("\n-------------------------------------")
@@ -59,7 +53,6 @@ def main_menu(conn, cursor):
             print()
             print("Please select a valid option")
 
-# Create a new recipe.
 def create_recipe(conn, cursor):
     ingredients = []
     name = input("\nEnter the name of the recipe: ")
@@ -78,7 +71,6 @@ def create_recipe(conn, cursor):
     print()
     print("Recipe created successfully!")
 
-    # Calculate the difficulty of a recipe based on its cooking time and number of ingredients.
 def calculate_difficulty(cooking_time, ingredients):
     if cooking_time < 10 and len(ingredients) < 4:
         return "Easy"
@@ -89,7 +81,6 @@ def calculate_difficulty(cooking_time, ingredients):
     else:
         return "Hard"
 
-# Search for a recipe based on an ingredient.
 def search_recipe(cursor):
     cursor.execute("SELECT ingredients FROM Recipes")
     results = cursor.fetchall()
@@ -98,7 +89,7 @@ def search_recipe(cursor):
         for ingredient in row:
             ingredients_list = ingredient.split(
                 ", "
-            )  # Split the ingredients string into a list
+            )
             for item in ingredients_list:
                 if item not in all_ingredients:
                     all_ingredients.append(item)
@@ -139,7 +130,6 @@ def search_recipe(cursor):
             print(f"Cooking time: {row[2]} minutes")
             print(f"Difficulty: {row[3]}")
         
-# update an existing recipe.
 def update_recipe(conn, cursor):
     results = cursor.execute("SELECT * FROM Recipes")
     results = cursor.fetchall()
@@ -209,7 +199,6 @@ def update_recipe(conn, cursor):
     print()
     print("Recipe updated successfully!")
 
-# Delete a recipe.
 def delete_recipe(conn, cursor):
     results = cursor.execute("SELECT * FROM Recipes")
     results = cursor.fetchall()
@@ -236,7 +225,6 @@ def delete_recipe(conn, cursor):
     print()
     print("Recipe deleted successfully!")
 
-    # View all recipes.
 def view_recipes(cursor):
     cursor.execute("SELECT * FROM Recipes")
     results = cursor.fetchall()
