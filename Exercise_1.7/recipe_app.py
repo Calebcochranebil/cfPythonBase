@@ -57,3 +57,79 @@ class Recipe(Base):
 
 # create_all() method to create tables
 Base.metadata.create_all(engine)
+
+# Create recipe
+def create_recipe():
+    try:
+        # Ask user for recipe name
+        name = input("\nEnter the name of the recipe: ")
+        # Check that name is alphanumeric and less than 50 characters
+        while not is_alpha_space_or_hyphen(name) or len(name) > 50:
+            print()
+            print(
+                "Please enter a recipe name that contains only letters, spaces and hyphens and is less than 50 characters long"
+            )
+            name = input("\nEnter the name of the recipe: ")
+
+        # Ask user for cooking time
+        cooking_time = input("\nEnter the cooking time in minutes: ")
+        # Check that cooking time is numeric
+        while not cooking_time.isnumeric():
+            print()
+            print("Please enter a cooking time that is numeric")
+            cooking_time = input("\nEnter the cooking time in minutes: ")
+
+        # Convert cooking_time to integer
+        cooking_time = int(cooking_time)
+
+        # Ask user how many ingredients they want to add
+        number_of_ingredients = int(
+            input("\nHow many ingredients do you want to add? ")
+        )
+
+        # Create an empty list to store the ingredients
+        ingredients = []
+
+        # Ask user to enter each ingredient
+        for i in range(number_of_ingredients):
+            ingredient = input(f"\nEnter ingredient {i+1} or type 'done' to finish: ")
+            # Check that ingredient is alphabetical
+            while not is_alpha_space_or_hyphen(ingredient) and ingredient != "done":
+                print()
+                print(
+                    "Please enter an ingredient using only letters, spaces and hyphens"
+                )
+                ingredient = input(
+                    f"\nEnter ingredient {i+1} or type 'done' to finish: "
+                )
+            # Add ingredient to list
+            if ingredient != "done":
+                ingredients.append(ingredient)
+
+        # Join ingredients list into a string separated by commas
+        ingredients = ", ".join(ingredients)
+
+        # Create recipe_entry object
+        recipe_entry = Recipe(
+            name=name,
+            ingredients=ingredients,
+            cooking_time=cooking_time,
+        )
+
+        # Calculate the difficulty of the recipe
+        recipe_entry.calculate_difficulty()
+
+        # Add recipe to session
+        session.add(recipe_entry)
+
+        # Commit changes
+        session.commit()
+
+        print()
+        print("Recipe created successfully!")
+        print()
+    except Exception as e:
+        print()
+        print("There was an error creating the recipe")
+        print(e)
+        print()
